@@ -1,0 +1,469 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#panel-left {
+    width: 1000px;
+    height: 100%;
+    float: left;
+    /*padding-left: 50px;*/
+}
+/* Always set the map height explicitly to define the size of the div
+* element that contains the map. */
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+
+#panel-right {
+    width: 350px;
+    height: 100%;
+    background-color: white;
+    float: left;
+}
+
+
+.menu-button {
+    height: 30px;
+    margin-left: 20px;
+    display:inline-block;
+    color:#FFFFFF;
+    border:1px solid #CCC;
+    background:#444;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+    cursor:pointer;
+    vertical-align:middle;
+    max-width: 230px;
+    min-width: 150px;
+    padding-top: 5px;
+    text-align: center;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-weight: bold;
+}
+
+.view-options {
+    display: inline-block;
+    float: right;
+}
+
+.view-option-item {
+    display: inline-block;
+    padding-left: 10px;
+}
+
+.panel-left-header {
+    background-color: grey;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.menu-button:hover {
+    color:red;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+}
+
+.search-box {
+    height: 100%;
+    border: 1px;
+    width: 180px;
+    margin-left: 5px;
+}
+
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border: 1px;
+    text-align: left;
+}
+
+.dropdown-content div {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border: 1px;
+    text-align: left;
+}
+/* Change color of dropdown links on hover */
+.dropdown-content div:hover {background-color: #ddd}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+.mgGreenIndex {
+    display: block;
+    min-width:242px;
+    min-height:290px;
+    width: auto;
+    height: auto;
+}
+
+#wordcloud {
+    background-color: #666666;
+}
+
+#stats-scale img {
+    min-width:242px;
+    max-width: 645px;
+    /*min-height:290px;*/
+    width: auto;
+    height: auto;
+}
+
+#statistics img {
+    min-width:242px;
+    max-width: 830px;
+    min-height:330px;
+    width: auto;
+    height: auto;
+}
+
+#well-horizon img {
+    min-width:242px;
+    max-width: 830px;
+    min-height:330px;
+    width: auto;
+    height: auto;
+}
+
+.well-popup-content {
+    vertical-align: top;
+}
+
+.news-window {
+    width: 500px;
+    height: 800px;
+    background-color: #FFFFFF;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: solid 2px black;
+
+}
+
+.water-admin-board-overlay, .news-overlay {
+    background: transparent !important;
+}
+
+.news-item {
+    display: block;
+    border: 1px;
+    padding-left: 10px;
+}
+
+.news-date {
+    display: block;
+    text-align: right;
+    padding-right: 10px
+}
+
+.water-admin-board {
+    width: 1000px;
+    height: 600px;
+    background-color: #FFFFFF;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: solid 2px black;
+}
+
+.ag-chat-board {
+    width: 1000px;
+    height: 550px;
+    background-color: #FFFFFF;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: solid 2px black;
+}
+
+.horizontal-Line {
+    display: block;
+    height: 3px;
+    background-color: black;
+}
+
+.popup-container {
+    border: solid 1px black;
+}
+
+.user-feedback {
+    margin-left: 60px;
+}
+
+.feedback-content {
+    width: 300px;
+    height: 80px;
+}
+
+.discovery-window {
+    width: 1000px;
+    height: 600px;
+    background-color: #FFFFFF;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: solid 2px black;
+
+}
+
+
+.discovery-topic {
+    width:250px;
+    height:225px;
+    margin: 10px;
+    border:10px solid white;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+
+.discovery-topic:hover {
+    border:10px solid red;
+}
+
+.discovery-content {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.discovery-content-row td{
+    text-align: center;
+    vertical-align: middle;
+    color: black;
+}
+
+.discovery-content-row td:hover{
+    color: red;
+    cursor: pointer;
+}
+
+.discovery-topic-link {
+    font-weight: bold;
+}
+
+.discovery-topic-link:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.discovery-topic-link {
+    text-transform: uppercase;
+}
+
+.water-topic-window {
+    width: 700px;
+    height: 900px;
+    background-color: #FFFFFF;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: solid 2px black;
+}
+
+.topic-category {
+    display: block;
+    float: left;
+    width: 150px;
+    height: 845px;
+    margin-left: 2px;
+    /*border: 1px solid black;*/
+}
+
+.topic-category-header {
+    display: block;
+    height: 20px;
+    background-color: #444444;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.topic-category-header span{
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 5px;
+}
+
+.topic-category-heading {
+    font-weight: bold;
+    color: #ec971f;
+    font-size: 18px;
+
+}
+
+.topic-category-content {
+    font-weight: bold;
+    /*margin-left: 5px;*/
+}
+
+.topic-category-content div {
+    display: block;
+    /*margin-top: 5px;*/
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.topic-category-content div div{
+    margin-left: 5px;
+}
+
+
+.topic-category-content div:hover{
+    color: red;
+    cursor: pointer;
+    text-decoration: underline;
+    background-color: #8c8c8c;
+}
+
+.topic-items {
+    float: left;
+    margin-left: 10px;
+    display: block;
+    width: 530px;
+}
+
+
+.topic-item-block {
+    float: left;
+    display: block;
+    width: 400px;
+    /*border: 1px solid black;*/
+}
+
+.item-avatar {
+    float: left;
+}
+
+.item-avatar img {
+    max-width: 120px;
+    max-height: 120px;
+}
+
+.item-title {
+    display: block;
+}
+
+.item-title a {
+    color: #ec971f;
+    font-weight: bold;
+}
+
+.item-title a:hover {
+    color: #ec971f;
+}
+
+.water-stories textarea {
+    margin-top: 5px;
+    width: 390px;
+    height: 130px;
+    /*float: left;*/
+}
+
+.water-forecasting-header {
+    margin-left: 30px;
+}
+
+.select-counties {
+    min-width: 200px;
+}
+
+.select-lead-time {
+    margin-top: 5px;
+}
+
+.water-forecasting-header {
+    margin-top: 10px;
+}
+
+/***Comparison ***/
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+    stroke-width: 1px;
+}
+
+.axis { font: 12px sans-serif; }
+
+.x.axis path {
+    fill: none;
+    stroke: black;
+    /*stroke-width: -0.5;*/
+}
+
+.area.above {
+    fill: rgb(252,141,89);
+}
+
+.area.below {
+    fill: rgb(145,207,96);
+}
+
+.line {
+    fill: none;
+    stroke: #000;
+    stroke-width: 1px;
+}
+
+.tooltip-comparison {
+    background-color: #666666;
+    color: white;
+}
+
+.county-select {
+    margin-left: 30px;
+}
+
+.water-forecasting {
+    width: 1000px;
+    height: 350px;
+    background-color: #FFFFFF;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: solid 2px black;
+
+}

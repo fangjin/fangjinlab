@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Water Resource Management</title>
+    <link rel="icon" href="./resources/img/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="./resources/css/water.css"/>
+    <link rel="stylesheet" type="text/css" href="./resources/css/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="./resources/css/rating.css"/>
+    <link rel="stylesheet" type="text/css" href="./lib/horizon.css"/>
+
+    <script src="lib/jquery-3.1.1.min.js"></script>
+    <script src="lib/jquery.csv.min.js"></script>
+    <script src="lib/highstock.js"></script>
+    <script src="lib/exporting.js"></script>
+    <!-- Include D3 word cloud -->
+    <script type="text/javascript" src="lib/d3.min.js"></script>
+    <!--<script type="text/javascript" src="lib/d3.dispatch.js"></script>-->
+    <script type="text/javascript" src="lib/d3.layout.cloud.js"></script>
+    <!--<script src="https://d3js.org/d3.v4.js"></script>-->
+
+    <!-- Include Required Prerequisites -->
+    <script type="text/javascript" src="lib/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css" />
+
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="lib/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="resources/css/daterangepicker.css" />
+
+    <script type="text/javascript" src="lib/EventDispatcher.js"></script>
+
+    <!-- https://tmroyal.github.io/Chart.Streamgraph -->
+    <script src="lib/Chart.Streamgraph.S.js"></script>
+    <!--<script src="lib/horizonLib.js"></script>-->
+    <script src="lib/d3-horizon-chart.js"></script>
+    <!--<script src="lib/horizon-chart.js"></script>-->
+
+    <!-- Include Vex - Popup manager -->
+    <script type="text/javascript" src="lib/vex.js"></script>
+    <script type="text/javascript" src="lib/vex.combined.js"></script>
+    <link rel="stylesheet" type="text/css" href="resources/css/vex/vex.css" />
+    <link rel="stylesheet" type="text/css" href="resources/css/vex/vex-theme-os.css" />
+
+    <script src="js/horizon.js"></script>
+    <script src="js/menu_item_handler.js"></script>
+    <script src="js/water_topic.js"></script>
+    <script src="js/water_discovery.js"></script>
+    <script src="js/water_forecasting.js"></script>
+    <script src="js/interpolator.js"></script>
+    <script src="js/well_manager.js"></script>
+    <script src="js/comparison_chart.js"></script>
+    <script src="js/layer_manger.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/stats_viewer.js"></script>
+    <script src="js/word_cloud.js"></script>
+    <script src="js/news_reader.js"></script>
+    <script src="js/stake_holder_viewer.js"></script>
+
+
+<!--<style>-->
+    <!--body {-->
+        <!--margin: 0;-->
+        <!--padding: 0;-->
+    <!--}-->
+
+    <!--.horizon {-->
+        <!--border-top: solid 1px #000;-->
+        <!--border-bottom: solid 1px #000;-->
+        <!--overflow: hidden;-->
+        <!--position: relative;-->
+    <!--}-->
+
+    <!--.horizon + .horizon {-->
+        <!--border-top: none;-->
+    <!--}-->
+
+    <!--.horizon canvas {-->
+        <!--display: block;-->
+        <!--image-rendering: pixelated;-->
+    <!--}-->
+
+  <!--.horizon .title,-->
+  <!--.horizon .value {-->
+      <!--bottom: 0;-->
+      <!--line-height: 30px;-->
+      <!--margin: 0 6px;-->
+      <!--position: absolute;-->
+      <!--font-family: sans-serif;-->
+      <!--text-shadow: 0 1px 0 rgba(255,255,255,.5);-->
+      <!--white-space: nowrap;-->
+  <!--}-->
+
+  <!--.horizon .title {-->
+      <!--left: 0;-->
+  <!--}-->
+
+  <!--.horizon .value {-->
+      <!--right: 0;-->
+  <!--}-->
+
+<!--</style>-->
+
+
+
+</head>
+<body style="margin: 0 auto;">
+    <div id="panel-left">
+        <div class="panel-left-header">
+            <!--<div style="float: left; height: 30px; "><input type="text" placeholder="Search state or county..." class="search-box" /></div>-->
+            <div class="menu-button" onclick="gmap.activateWaterLevelHeatMap()">Water Level Index</div>
+            <div class="menu-button" onclick="gmap.activateDroughtIndexlHeatMap()">Precipitation Index</div>
+            <div class="menu-button" onclick="menuItemHandler.showWaterForecasting()">Water Level Forecasting</div>
+
+            <div class="menu-button">
+                <div onclick="menuItemHandler.showStakeHolders()">
+                    Stakeholders
+                </div>
+                <div id="myDropdown" class="dropdown-content">
+                    <div onclick="menuItemHandler.onAdminBoardClick()">Water Development Board</div>
+                    <!--<div >Water Suppliers</div>-->
+                    <div onclick="menuItemHandler.onAgChatClick()">Farmer Bureau</div>
+                    <!--<div>Stakeholders' Cooperation</div>-->
+                </div>
+            </div>
+            <div class="menu-button" onclick="menuItemHandler.onDiscoveryClick();">Discussion Board</div>
+            <!--<div class="menu-button" onclick="newsReader.showNews();">News</div>-->
+
+        </div>
+         <!--<div class="view-options">-->
+             <!--<div class="view-option-item">-->
+                 <!--<input type="radio"  name="viewOption" value="State View" /><label>&nbsp;State View</label>-->
+
+             <!--</div>-->
+             <!--<div class="view-option-item">-->
+                 <!--<input type="radio"  name="viewOption" value="County View" checked /><label>&nbsp;County View</label>-->
+
+             <!--</div>-->
+         <!--</div>-->
+        <div id="map"></div>
+    </div>
+
+    <div id="panel-right">
+        <!--<div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">-->
+            <!--<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;-->
+            <!--<span></span> <b class="caret"></b>-->
+        <!--</div>-->
+
+        <div>
+            <div class="county-select" >Select a county</div>
+
+            <select class="county-select" onchange="menuItemHandler.onCountyChangeSelect(this.value)">
+                <option value="" disabled selected>-- Select a county --</option>
+                <option value="andrews">Andrews</option>
+                <option value="armstrong">Armstrong</option>
+                <option value="bailey">Bailey</option>
+                <option value="borden">Borden</option>
+                <option value="briscoe">Briscoe</option>
+                <option value="carson">Carson</option>
+                <option value="castro">Castro</option>
+                <option value="cochran">Cochran</option>
+                <option value="crosby">Crosby</option>
+                <option value="dallam">Dallam</option>
+                <option value="dawson">Dawson</option>
+                <option value="deaf smith">Deaf smith</option>
+                <option value="dickens">Dickens</option>
+                <option value="donley">Donley</option>
+                <option value="ector">Ector</option>
+                <option value="floyd">Floyd</option>
+                <option value="gaines">Gaines</option>
+                <option value="garza">Garza</option>
+                <option value="glasscock">Glasscock</option>
+                <option value="gray">Gray</option>
+                <option value="hale">Hale</option>
+                <option value="hansford">Hansford</option>
+                <option value="hartley" selected>Hartley</option>
+                <option value="hemphill">Hemphill</option>
+                <option value="hockley">Hockley</option>
+                <option value="howard">Howard</option>
+                <option value="hutchinson">Hutchinson</option>
+                <option value="lamb">Lamb</option>
+                <option value="lipscomb">Lipscomb</option>
+                <option value="lubbock">Lubbock</option>
+                <option value="lynn">Lynn</option>
+                <option value="martin">Martin</option>
+                <option value="midland">Midland</option>
+                <option value="moore">Moore</option>
+                <option value="ochiltree">Ochiltree</option>
+                <option value="oldham">Oldham</option>
+                <option value="parmer">Parmer</option>
+                <option value="potter">Potter</option>
+                <option value="randall">Randall</option>
+                <option value="roberts">Roberts</option>
+                <option value="runnels">Runnels</option>
+                <option value="sherman">Sherman</option>
+                <option value="swisher">Swisher</option>
+                <option value="terry">Terry</option>
+                <option value="wheeler">Wheeler</option>
+                <option value="yoakum">Yoakum</option>
+            </select>
+        </div>
+
+        <div id="statistics">
+            <!--<img src="resources/img/one-well.png" />-->
+        </div>
+        <!--<div class="horizontal-Line" ></div>-->
+        <!--<div id="stats-scale">-->
+            <!--<img src="resources/img/saturated-thichness-bar.png">-->
+        <!--</div>-->
+
+        <!--<div id="greenIndex"><img src="resources/img/vdvi.jpg" /></div>-->
+
+        <table>
+            <tr valign="top">
+                <td style="width: 50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><img src="resources/img/scale.png" style="height: 550px" /></td>
+                <td><div id="horizonChart"></div></td>
+            </tr>
+        </table>
+
+    </div>
+
+    <!--<script type="text/javascript" src="js/date_range_picker.js"></script>-->
+    <script src="main.js" ></script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvNMI8W0Q5Avt28mzzt-V-D23AKL1jk8I&callback=gmap.initMap">
+    </script>
+
+
+
+</body>
+</html>
